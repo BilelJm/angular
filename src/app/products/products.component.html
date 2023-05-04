@@ -1,0 +1,31 @@
+<input  type="search" placeholder="Search" [(ngModel)]="searchP">
+<div >
+  <div >
+    <ng-container *ngFor="let product of filteredProducts, let i = index">
+      <div >
+        <div >
+          <div >{{product.title}}</div>
+          <div >
+            <h4 >{{product.price}}</h4>
+            <p >Likes :{{product.like}}</p>
+            <p >quantity :{{product.quantity}}</p>
+            <button type="button"  [disabled]="product.quantity==0" (click)="Buy(i)">Buy</button>
+            <button type="button"  (click)="Like(i)">Like</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-container *ngIf="filteredProducts.length === 0">
+  <ng-template #NotFound>
+    <div>
+      <div >Info</div>
+      <div >
+        <p >Product doesn't exist</p>
+      </div>
+    </div>
+  </ng-template>
+  <ng-container [ngTemplateOutlet]="NotFound"></ng-container>
+</ng-container>

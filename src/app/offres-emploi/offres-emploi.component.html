@@ -1,0 +1,26 @@
+<div >
+    <div >
+      <div >
+        <form >
+          <div >
+            <input type="text" id="entreprise" placeholder="Chercher un emploi par entreprise" [(ngModel)]="searchTerm" name="entreprise" (input)="search()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div >
+    <div >
+        <ng-container *ngFor="let emploi of filteredEmploi, let i = index">
+            <div >
+                <div >
+                    <div >{{emploi.titre}}</div>
+                    <div >
+                        <h4 >{{emploi.entreprise}}</h4>
+                        <button type="button"  [disabled]="emploi.etat==false">Postuler</button>
+                        <button type="button"  (click)="count()">Bilan</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
